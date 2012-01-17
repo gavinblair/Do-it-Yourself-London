@@ -35,11 +35,11 @@
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 
-<body>
-
-  <div id="container"
+<body
 	<?php if(!isset($_GET['tax'])) { ?>
-		class="intro">
+		class="intro" >
+
+  <div id="container">
 		<header class="intro">
 			<h1>Do it yourself - London - 2011 Budget App</h1>
 		</header>
@@ -63,7 +63,8 @@
 			</form>
 		</div>
 	<?php } else { ?>
-		class="">
+		>
+  <div id="container">
 		<?php
 			$tax = intval($_GET['tax']);
 			$value = isset($_GET['value']) ? intval($_GET['value']) : 0;
@@ -187,7 +188,7 @@
 			
 				<ol>
 				<?php $i=1; foreach($questions as $key => $q): ?>
-				<li id="<?php echo $key; ?>" <?php echo $i == 1? "class='current'" : ''; ?> ><h3><?php echo ucwords(str_replace(array('-', 'and'), array(' ', '&'), $key)); ?></h3>
+				<li id="<?php echo $key; ?>" <?php echo $i == 1? "class='current'" : ''; ?> ><h3><?php echo $i.". &nbsp;".ucwords(str_replace(array('-', 'and'), array(' ', '&'), $key)); ?></h3>
 					<p><?php echo $q['question'];  $i++; ?></p>
 					<input class="increase" type="radio" name="<?php echo $key; ?>" id="<?php echo $key; ?>-increase" value="increase" /><label  class="increase" for="<?php echo $key; ?>-increase">Increase</label>
 					<input class="nochange" type="radio" name="<?php echo $key; ?>" id="<?php echo $key; ?>-nochange" value="nochange" /><label class="nochange" for="<?php echo $key; ?>-nochange">No Change</label>
@@ -217,7 +218,7 @@
 	<?php } ?>
   </div> <!--! end of #container -->
 	<div id="greenscreen" class="hidden">
-		<div id="dialog">
+		<div id="dialog" class="hidden">
 			<p>Based on your budget decisions, your new taxes would be:</p>
 			<div id="finaltaxes">$3,075</div>
 			<p>(annually)</p>

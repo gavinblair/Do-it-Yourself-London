@@ -21,9 +21,18 @@ $(document).ready(function() {
 		$(this).hide();
 		//done game?
 		if($("#quiz li.current").length == 0) {
-			$("#greenscreen").removeClass("hidden");
+			$("#dialog").removeClass("hidden");
+			$("#greenscreen").addClass("closeme");
 			$("#finaltaxes").text("$"+$("#totaltaxes").text());
+		}else{
+			$("#greenscreen").addClass("hidden");
 		}
+	});
+	
+	$(".closeme").live("click", function(){
+			$("#greenscreen").addClass("hidden").removeClass("closeme");
+			$("#dialog").addClass("hidden");		
+			$("canvas").hide();
 	});
 	
 	$("#quiz label").click(function(){
@@ -55,6 +64,11 @@ $(document).ready(function() {
 			news2 = $(this).parent('li').children('p.'+choice+"2").text();
 			news3 = $(this).parent('li').children('p.'+choice+"3").text();
 			
+			$("#greenscreen").removeClass("hidden");
+			
+			setTimeout(function(){
+				$("#greenscreen").addClass("closeme");
+			}, 500);
 			newspaper(news1, news2, news3);
 		}
 		var id = $(this).parent("li").next("li").attr("id");
